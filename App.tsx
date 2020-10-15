@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
@@ -12,10 +12,20 @@ import ProgressOrder from './views/ProgressOrder';
 
 import FirebaseState from './context/firebase/firebaseState'
 import OrdersState from './context/orders/ordersState';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator()
 
 export default function App() {
+
+  useEffect(() => {
+    (async () => await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+    }))();
+     }, []) 
+
   return (
     <>
       <FirebaseState>
@@ -27,6 +37,7 @@ export default function App() {
         headerTitleStyle: {
           fontWeight: 'bold'
         },
+        headerTintColor: '#000',
         headerTitleAlign: 'center'
         }}>
             <Stack.Screen name="NewOrder" component={NewOrder} options={{ title: 'New Order'}} />

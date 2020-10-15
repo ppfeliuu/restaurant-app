@@ -1,12 +1,30 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import { Container, Button, Text } from 'native-base'
+import globalStyles from '../styles/global'
+import { useNavigation } from '@react-navigation/native'
+
 
 const NewOrder = () => {
+
+    const navigation = useNavigation()
+
     return (
-        <Text>
-            New order
-        </Text>
+        <Container style={globalStyles.contenedor}>
+            <View style={[globalStyles.contenido, styles.contenido]}>
+                <Button style={globalStyles.boton} rounded block onPress={() => navigation.navigate('Menu')}>
+                    <Text style={globalStyles.botonTexto}>New Order</Text>
+                </Button>
+            </View>            
+        </Container>
     )
 }
+
+const styles = StyleSheet.create({
+    contenido: {
+        flexDirection: 'column',
+        justifyContent: 'center'
+    }
+})
 
 export default NewOrder
