@@ -14,6 +14,8 @@ import FirebaseState from './context/firebase/firebaseState'
 import OrdersState from './context/orders/ordersState';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import ButtonResumen from './components/ui/ButtonResumen';
+
 
 const Stack = createStackNavigator()
 
@@ -41,7 +43,7 @@ export default function App() {
         headerTitleAlign: 'center'
         }}>
             <Stack.Screen name="NewOrder" component={NewOrder} options={{ title: 'New Order'}} />
-            <Stack.Screen name="Menu" component={Menu} options={{ title: 'Menu'}} />
+            <Stack.Screen name="Menu" component={Menu} options={{ title: 'Menu', headerRight: props => <ButtonResumen />}} />
             <Stack.Screen name="DishDetail" component={DishDetail} options={{ title: 'Detail'}} />
             <Stack.Screen name="DishForm" component={DishForm} options={{ title: 'Form'}} />
             <Stack.Screen name="Resume" component={ResumeOrder} options={{ title: 'Resume'}} />
